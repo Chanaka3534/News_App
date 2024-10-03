@@ -11,7 +11,8 @@ class CRoundedContainer extends StatelessWidget {
       this.boderColor = Colors.blue,
       this.backgroundColor = Colors.white,
       this.padding,
-      this.margin});
+      this.margin,
+      this.image});
 
   final double? width, height;
   final double radius;
@@ -19,6 +20,7 @@ class CRoundedContainer extends StatelessWidget {
   final bool showBorder;
   final Color boderColor, backgroundColor;
   final EdgeInsetsGeometry? padding, margin;
+  final DecorationImage? image;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class CRoundedContainer extends StatelessWidget {
       padding: padding,
       margin: margin,
       decoration: BoxDecoration(
+          image: image,
           color: backgroundColor,
           borderRadius: BorderRadius.circular(radius),
           border: showBorder ? Border.all(color: boderColor) : null),

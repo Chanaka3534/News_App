@@ -1,3 +1,4 @@
+import 'package:flashnews/features/screens/home_screen/home_screen.dart';
 import 'package:flashnews/utils/helpers/helper_funcion.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -51,7 +52,13 @@ class GetStartScreen extends StatelessWidget {
           SizedBox(
             width: width * 0.5,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomeScreen(),
+                    ));
+              },
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue, foregroundColor: Colors.white),
               child: const Text(

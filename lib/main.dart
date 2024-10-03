@@ -10,8 +10,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'News API',
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
+      title: 'News App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
             seedColor: const Color.fromARGB(255, 58, 169, 183)),
