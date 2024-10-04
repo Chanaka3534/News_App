@@ -5,6 +5,8 @@ import 'package:flashnews/features/model/slider_model.dart';
 import 'package:flashnews/features/screens/allNews.dart';
 import 'package:flashnews/features/screens/widget/breaking_news_slider.dart';
 import 'package:flashnews/features/screens/widget/category_tile.dart';
+import 'package:flashnews/features/screens/widget/drawer_header.dart';
+import 'package:flashnews/features/screens/widget/drawer_list.dart';
 import 'package:flashnews/features/screens/widget/header.dart';
 import 'package:flashnews/features/screens/widget/trending_news_tile.dart';
 import 'package:flashnews/services/data.dart';
@@ -54,6 +56,15 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(216, 255, 255, 255),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: const <Widget>[
+            Drawerheader(),
+            Drawerlist(),
+          ],
+        ),
+      ),
       body: _loading
           ? const Center(child: CircularProgressIndicator())
           : SingleChildScrollView(

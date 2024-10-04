@@ -24,10 +24,14 @@ class Header extends StatelessWidget {
                 image: const AssetImage('Assets/images/background.png'))),
         child: Stack(
           children: [
-            const Positioned(
+            Positioned(
                 top: 20,
                 left: 20,
-                child: Icon(Iconsax.menu_1, color: Colors.white)),
+                child: GestureDetector(
+                    onTap: () {
+                      Scaffold.of(context).openDrawer(); // Open the drawer
+                    },
+                    child: const Icon(Iconsax.menu_1, color: Colors.white))),
             Center(
               child: Text(
                 'FLASH NEWS',
@@ -48,7 +52,7 @@ class Header extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(50)),
                     child: Image.network(
-                      'https://www.google.com/imgres?q=anime%20profile%20pictures&imgurl=https%3A%2F%2Fimage.lexica.art%2Ffull_jpg%2F19f280a2-2b97-4be2-b782-1fd5c70b84f4&imgrefurl=https%3A%2F%2Flexica.art%2Fprompt%2F4b32ed77-c13c-490e-9cfc-9d1dc832a134&docid=0PHT5sbLOl3-gM&tbnid=itgUKub2a6sSrM&vet=12ahUKEwjU18GG0u-IAxUaxjgGHbstMzUQM3oECGYQAA..i&w=2560&h=2560&hcb=2&ved=2ahUKEwjU18GG0u-IAxUaxjgGHbstMzUQM3oECGYQAA',
+                      'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
                       errorBuilder: (BuildContext context, Object error,
                           StackTrace? stackTrace) {
                         return Image.asset(
