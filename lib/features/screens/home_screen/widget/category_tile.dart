@@ -14,17 +14,17 @@ class CategoryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.only(left: 16),
       child: Column(
         children: [
           CRoundedContainer(
-            width: 65,
-            height: 65,
+            width: 60,
+            height: 60,
             radius: 100,
             child: Center(
               child: Icon(
                 icon,
-                size: 40,
+                size: 35,
                 weight: 300,
               ),
             ),
