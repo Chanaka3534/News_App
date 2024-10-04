@@ -5,12 +5,12 @@ List<CategoryModel> getCategories() {
   List<CategoryModel> category = [];
   CategoryModel categoryModel = CategoryModel();
 
-  categoryModel.categoryName = "Bussines";
+  categoryModel.categoryName = "Business";
   categoryModel.icon = Iconsax.message_square;
   category.add(categoryModel);
   categoryModel = CategoryModel();
 
-  categoryModel.categoryName = "Entertaintment";
+  categoryModel.categoryName = "Entertainment";
   categoryModel.icon = Iconsax.mobile;
   category.add(categoryModel);
   categoryModel = CategoryModel();
@@ -25,7 +25,7 @@ List<CategoryModel> getCategories() {
   category.add(categoryModel);
   categoryModel = CategoryModel();
 
-  categoryModel.categoryName = "Sport";
+  categoryModel.categoryName = "Sports";
   categoryModel.icon = Iconsax.flag;
   category.add(categoryModel);
   categoryModel = CategoryModel();
@@ -35,7 +35,7 @@ List<CategoryModel> getCategories() {
   category.add(categoryModel);
   categoryModel = CategoryModel();
 
-  categoryModel.categoryName = "Tecnology";
+  categoryModel.categoryName = "Technology";
   categoryModel.icon = Iconsax.setting4;
   category.add(categoryModel);
   categoryModel = CategoryModel();

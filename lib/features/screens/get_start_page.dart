@@ -1,4 +1,4 @@
-import 'package:flashnews/features/screens/home_screen/home_screen.dart';
+import 'package:flashnews/features/screens/home_screen.dart';
 import 'package:flashnews/utils/helpers/helper_funcion.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

@@ -1,29 +1,28 @@
 import 'dart:convert';
 
-import 'package:flashnews/features/model/slider_model.dart';
+import 'package:flashnews/features/model/show_category_model.dart';
 import 'package:http/http.dart' as http;
 
-class Sliders {
-  List<SliderModel> sliders = [];
+class ShowCategoryNews {
+  List<ShowCategoryModel> categories = [];
 
-  Future<void> getSliders() async {
+  Future<void> getCategoryNews(String catogory) async {
     String url =
-        'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=cdf259d3bc3f4a2ea621e359140e1a32';
+        'https://newsapi.org/v2/top-headlines?country=us&category=$catogory&apiKey=cdf259d3bc3f4a2ea621e359140e1a32';
     var response = await http.get(Uri.parse(url));
     var jasonData = jsonDecode(response.body);
 
     if (jasonData['status'] == 'ok') {
       jasonData['articles'].forEach((element) {
         if (element['urlToImage'] != null && element['description'] != null) {
-          SliderModel sliderModel = SliderModel(
+          ShowCategoryModel showCategoryModel = ShowCategoryModel(
               title: element['title'],
               author: element['author'],
-              content: element['content'],
               description: element['description'],
               url: element['url'],
               urlToImage: element['urlToImage'],
               publisgAt: element['publishedAt']);
-          sliders.add(sliderModel);
+          categories.add(showCategoryModel);
         }
       });
     }

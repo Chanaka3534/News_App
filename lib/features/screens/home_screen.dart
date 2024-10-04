@@ -2,10 +2,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flashnews/features/model/artical_model.dart';
 import 'package:flashnews/features/model/category_model.dart';
 import 'package:flashnews/features/model/slider_model.dart';
-import 'package:flashnews/features/screens/home_screen/widget/breaking_news_slider.dart';
-import 'package:flashnews/features/screens/home_screen/widget/category_tile.dart';
-import 'package:flashnews/features/screens/home_screen/widget/header.dart';
-import 'package:flashnews/features/screens/home_screen/widget/trending_news_tile.dart';
+import 'package:flashnews/features/screens/allNews.dart';
+import 'package:flashnews/features/screens/widget/breaking_news_slider.dart';
+import 'package:flashnews/features/screens/widget/category_tile.dart';
+import 'package:flashnews/features/screens/widget/header.dart';
+import 'package:flashnews/features/screens/widget/trending_news_tile.dart';
 import 'package:flashnews/services/data.dart';
 import 'package:flashnews/services/news.dart';
 import 'package:flashnews/services/slider_data.dart';
@@ -29,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     categories = getCategories();
-    sliders = getSliders();
+    getSliders();
     getNews();
     super.initState();
   }
@@ -41,6 +42,12 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _loading = false;
     });
+  }
+
+  getSliders() async {
+    Sliders slider = Sliders();
+    await slider.getSliders();
+    sliders = slider.sliders;
   }
 
   @override
@@ -58,23 +65,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     const Header(),
 
                     ///Breaking News Text
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
+                    const Padding(
+                      padding: EdgeInsets.all(16.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
+                          Text(
                             'Breaking News',
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          GestureDetector(
-                            onTap: () {},
-                            child: const Text(
-                              'View all',
-                              style:
-                                  TextStyle(fontSize: 16, color: Colors.blue),
-                            ),
                           ),
                         ],
                       ),
@@ -84,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: CarouselSlider.builder(
-                        itemCount: sliders.length,
+                        itemCount: 5,
                         options: CarouselOptions(
                             height: 150,
                             autoPlay: true,
@@ -96,10 +95,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                             enlargeStrategy: CenterPageEnlargeStrategy.height),
                         itemBuilder: (context, index, realIndex) {
-                          String? urlImage = sliders[index].image;
-                          String? name = sliders[index].name;
+                          String? urlImage = sliders[index].urlToImage;
+                          String? name = sliders[index].title;
+                          String? url = sliders[index].url;
                           return BreakingNewsSliderTile(
-                              imageurl: urlImage ?? '', title: name ?? '');
+                              url: url ?? "",
+                              imageurl: urlImage ?? '',
+                              title: name ?? '');
                         },
                       ),
                     ),
@@ -109,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       padding: const EdgeInsets.only(top: 10),
                       child: AnimatedSmoothIndicator(
                         activeIndex: _currentIndex,
-                        count: sliders.length,
+                        count: 5,
                         effect: const ExpandingDotsEffect(
                           activeDotColor: Colors.blue,
                           dotHeight: 8,
@@ -161,7 +163,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(
+                                builder: (context) {
+                                  return AllNews(name: "Trending News");
+                                },
+                              ));
+                            },
                             child: const Text(
                               'View all',
                               style:
@@ -176,7 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: articles.length,
+                      itemCount: 10,
                       itemBuilder: (context, index) {
                         return TrendinNewsTile(
                           description: articles[index].description ?? "",
