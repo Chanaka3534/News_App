@@ -3,6 +3,7 @@ import 'package:flashnews/features/screens/widget/specific_news_tile.dart';
 import 'package:flashnews/services/news.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class AllNews extends StatefulWidget {
   String name;
   AllNews({super.key, required this.name});

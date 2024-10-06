@@ -3,6 +3,7 @@ import 'package:flashnews/features/screens/widget/specific_news_tile.dart';
 import 'package:flashnews/services/show_category_news.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ShowCategory extends StatefulWidget {
   String name;
   ShowCategory({super.key, required this.name});
